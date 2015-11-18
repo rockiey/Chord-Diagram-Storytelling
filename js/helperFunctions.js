@@ -59,6 +59,10 @@ function wrap(text, width) {
     };  
 };
 
+// It's hard to read the text if current delay setup
+// so just amplify the delayRate to number e.g. 3.0
+var delayRate = 3.0;
+
 /*Transition the top circle text*/
 function changeTopText (newText, loc, delayDisappear, delayAppear, finalText, xloc, w) {
 
@@ -70,7 +74,7 @@ function changeTopText (newText, loc, delayDisappear, delayAppear, finalText, xl
 	
 	middleTextTop	
 		/*Current text disappear*/
-		.transition().delay(700 * delayDisappear).duration(700)
+		.transition().delay(700 * delayDisappear * delayRate).duration(700 * delayRate)
 		.attr('opacity', 0)	
 		/*New text appear*/
 		.call(endall,  function() {
@@ -79,7 +83,7 @@ function changeTopText (newText, loc, delayDisappear, delayAppear, finalText, xl
 			.attr("x", xloc + "px")
 			.call(wrap, w);	
 		})
-		.transition().delay(700 * delayAppear).duration(700)
+		.transition().delay(700 * delayAppear * delayRate).duration(700 * delayRate)
 		.attr('opacity', 1)
 		.call(endall,  function() {
 			if (finalText == true) {
@@ -97,7 +101,7 @@ function changeTopText (newText, loc, delayDisappear, delayAppear, finalText, xl
 function changeBottomText (newText, loc, delayDisappear, delayAppear) {
 	middleTextBottom
 		/*Current text disappear*/
-		.transition().delay(700 * delayDisappear).duration(700)
+		.transition().delay(700 * delayDisappear * delayRate).duration(700 * delayRate)
 		.attr('opacity', 0)
 		/*New text appear*/
 		.call(endall,  function() {
@@ -105,7 +109,7 @@ function changeBottomText (newText, loc, delayDisappear, delayAppear) {
 			.attr("y", 24*loc + "px")
 			.call(wrap, 350);	
 		})
-		.transition().delay(700 * delayAppear).duration(700)
+		.transition().delay(700 * delayAppear * delayRate).duration(700 * delayRate)
 		.attr('opacity', 1);
 ;}/*changeTopText*/
 
